@@ -11,6 +11,7 @@ public class LottoManager {
     public void doLotto(Scanner scanner) {
         viewInputMoney(scanner);
         List<Integer> numbers = viewInputNumbers(scanner);
+        int bonusNumber = viewInputBonusNumber(scanner, numbers);
     }
 
     public int viewInputMoney(Scanner scanner) {
@@ -23,5 +24,9 @@ public class LottoManager {
 
     public List<Integer> viewInputNumbers(Scanner scanner) {
         return InputView.inputLottoNumbers(scanner);
+    }
+
+    public int viewInputBonusNumber(Scanner scanner, List<Integer> numbers) {
+        return InputView.inputBonusNumber(scanner, numbers);
     }
 }
