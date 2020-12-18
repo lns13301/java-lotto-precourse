@@ -32,21 +32,22 @@ public class InputValidator {
         try {
             String[] split = inputNumbers.split(NUMBER_SPLIT_UNIT);
 
-            return validateNumberFormat(Arrays.stream(split)
-                    .mapToInt(Integer::parseInt)
-                    .boxed()
-                    .collect(Collectors.toList()));
+            return validateNumberFormat(stringToInteger(split));
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
     }
 
+    private static List<Integer> stringToInteger(String[] values) {
+        return Arrays.stream(values).map(Integer::parseInt).collect(Collectors.toList());
+    }
+
     private static List<Integer> validateNumberFormat(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != NUMBER_COUNT) {
+        if (numbers.size() != NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
 
-        if (!numbers.stream().allMatch(number -> number > NUMBER_MIN && number < NUMBER_MAX)) {
+        if (!(numbers.stream().allMatch(number -> number >= NUMBER_MIN && number <= NUMBER_MAX))) {
             throw new IllegalArgumentException();
         }
 

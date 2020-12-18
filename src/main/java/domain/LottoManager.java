@@ -16,7 +16,7 @@ public class LottoManager {
     public void doLotto(Scanner scanner) {
         lottos = new Lottos(makeNumbers(showInputMoney(scanner)));
         Lotto lotto = new Lotto(showInputNumbers(scanner));
-        winninglotto = new WinningLotto(new Lotto(showInputNumbers(scanner)), showInputBonusNumber(scanner, lotto));
+        winninglotto = new WinningLotto(lotto, showInputBonusNumber(scanner, lotto));
 
         showResult();
     }
