@@ -9,14 +9,14 @@ public class InputView {
     private static final String INPUT_NUMBER_MISMATCH_MESSAGE = "[ERROR] 당첨 번호 입력이 잘못되었습니다.";
     private static final String INPUT_BONUS_NUMBER_MISMATCH_MESSAGE = "[ERROR] 보너스 번호 입력이 잘못되었습니다.";
 
-    public static void inputMoneyToBuyLotto(Scanner scanner) {
+    public static int inputMoneyToBuyLotto(Scanner scanner) {
         System.out.println(NEW_LINE + "구입 금액을 입력해 주세요.");
 
         try {
-            scanner.nextLine();
+            return InputValidator.validateMoney(scanner.nextLine());
         } catch (IllegalArgumentException e) {
             System.out.println(NEW_LINE + INPUT_MONEY_MISMATCH_MESSAGE);
-            inputMoneyToBuyLotto(scanner);
+            return inputMoneyToBuyLotto(scanner);
         }
     }
 
