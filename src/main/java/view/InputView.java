@@ -1,5 +1,7 @@
 package view;
 
+import domain.Lotto;
+
 import java.util.IllformedLocaleException;
 import java.util.List;
 import java.util.Scanner;
@@ -32,14 +34,14 @@ public class InputView {
         }
     }
     
-    public static int inputBonusNumber(Scanner scanner, List<Integer> numbers) {
+    public static int inputBonusNumber(Scanner scanner, Lotto lotto) {
         System.out.println(NEW_LINE + "보너스 볼을 입력해 주세요.");
 
         try {
-            return InputValidator.validateBonusNumber(numbers, scanner.nextLine());
+            return InputValidator.validateBonusNumber(lotto.getNumbers(), scanner.nextLine());
         } catch (IllformedLocaleException e) {
             System.out.println(INPUT_BONUS_NUMBER_MISMATCH_MESSAGE);
-            return inputBonusNumber(scanner, numbers);
+            return inputBonusNumber(scanner, lotto);
         }
     }
 }
