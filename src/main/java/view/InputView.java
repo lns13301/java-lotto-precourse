@@ -39,7 +39,7 @@ public class InputView {
 
         try {
             return InputValidator.validateBonusNumber(lotto.getNumbers(), scanner.nextLine());
-        } catch (IllformedLocaleException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(INPUT_BONUS_NUMBER_MISMATCH_MESSAGE);
             return inputBonusNumber(scanner, lotto);
         }
