@@ -14,14 +14,14 @@ public class LottoManager {
     private WinningLotto winninglotto;
 
     public void doLotto(Scanner scanner) {
-        lottos = new Lottos(makeNumbers(viewInputMoney(scanner)));
-        Lotto lotto = new Lotto(viewInputNumbers(scanner));
-        winninglotto = new WinningLotto(new Lotto(viewInputNumbers(scanner)), viewInputBonusNumber(scanner, lotto));
+        lottos = new Lottos(makeNumbers(showInputMoney(scanner)));
+        Lotto lotto = new Lotto(showInputNumbers(scanner));
+        winninglotto = new WinningLotto(new Lotto(showInputNumbers(scanner)), showInputBonusNumber(scanner, lotto));
 
         showResult();
     }
 
-    public int viewInputMoney(Scanner scanner) {
+    public int showInputMoney(Scanner scanner) {
         return getBoughtCount(InputView.inputMoneyToBuyLotto(scanner));
     }
 
@@ -35,11 +35,11 @@ public class LottoManager {
         return RandomGenerator.random(count);
     }
 
-    public List<Integer> viewInputNumbers(Scanner scanner) {
+    public List<Integer> showInputNumbers(Scanner scanner) {
         return InputView.inputLottoNumbers(scanner);
     }
 
-    public int viewInputBonusNumber(Scanner scanner, Lotto lotto) {
+    public int showInputBonusNumber(Scanner scanner, Lotto lotto) {
         return InputView.inputBonusNumber(scanner, lotto);
     }
 
