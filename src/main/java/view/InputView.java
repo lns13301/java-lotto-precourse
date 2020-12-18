@@ -1,6 +1,7 @@
 package view;
 
 import java.util.IllformedLocaleException;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -20,14 +21,14 @@ public class InputView {
         }
     }
 
-    public static void inputLottoNumbers(Scanner scanner) {
+    public static List<Integer> inputLottoNumbers(Scanner scanner) {
         System.out.println(NEW_LINE + "지난 주 당첨 번호를 입력해 주세요.");
 
         try {
-            scanner.nextLine();
+            return InputValidator.validateNumbers(scanner.nextLine());
         } catch (IllegalArgumentException e) {
             System.out.println(INPUT_NUMBER_MISMATCH_MESSAGE);
-            inputLottoNumbers(scanner);
+            return inputLottoNumbers(scanner);
         }
     }
     
