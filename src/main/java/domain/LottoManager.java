@@ -12,9 +12,7 @@ public class LottoManager {
     }
 
     public int viewInputMoney(Scanner scanner) {
-        int payedMoney = InputView.inputMoneyToBuyLotto(scanner);
-
-        return getBuyCount(payedMoney);
+        return getBuyCount(InputView.inputMoneyToBuyLotto(scanner));
     }
 
     private int getBuyCount(int money) {
