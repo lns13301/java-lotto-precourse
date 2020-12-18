@@ -1,11 +1,13 @@
 package view;
 
+import java.util.IllformedLocaleException;
 import java.util.Scanner;
 
 public class InputView {
     private static final String NEW_LINE = "\n";
     private static final String INPUT_MONEY_MISMATCH_MESSAGE = "[ERROR] 구입 금액 입력이 잘못되었습니다. (양의 정수 입력)";
     private static final String INPUT_NUMBER_MISMATCH_MESSAGE = "[ERROR] 당첨 번호 입력이 잘못되었습니다.";
+    private static final String INPUT_BONUS_NUMBER_MISMATCH_MESSAGE = "[ERROR] 보너스 번호 입력이 잘못되었습니다.";
 
     public static void inputMoneyToBuyLotto(Scanner scanner) {
         System.out.println(NEW_LINE + "구입 금액을 입력해 주세요.");
@@ -26,6 +28,17 @@ public class InputView {
         } catch (IllegalArgumentException e) {
             System.out.println(INPUT_NUMBER_MISMATCH_MESSAGE);
             inputLottoNumbers(scanner);
+        }
+    }
+    
+    public static void inputBonusNumber(Scanner scanner) {
+        System.out.println(NEW_LINE + "보너스 볼을 입력해 주세요.");
+
+        try {
+            scanner.nextLine();
+        } catch (IllformedLocaleException e) {
+            System.out.println(INPUT_BONUS_NUMBER_MISMATCH_MESSAGE);
+            inputBonusNumber(scanner);
         }
     }
 }
