@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.stream.Collectors;
-
 /**
  * 당첨 번호를 담당하는 객체
  */
