@@ -11,12 +11,12 @@ public class LottoManager {
     private static final int LOTTO_PRICE = 1000;
 
     private Lottos lottos;
-    private Lotto lotto;
+    private WinningLotto winninglotto;
 
     public void doLotto(Scanner scanner) {
         lottos = new Lottos(makeNumbers(viewInputMoney(scanner)));
-        lotto = new Lotto(viewInputNumbers(scanner));
-        int bonusNumber = viewInputBonusNumber(scanner, lotto);
+        Lotto lotto = new Lotto(viewInputNumbers(scanner));
+        winninglotto = new WinningLotto(new Lotto(viewInputNumbers(scanner)), viewInputBonusNumber(scanner, lotto));
     }
 
     public int viewInputMoney(Scanner scanner) {
