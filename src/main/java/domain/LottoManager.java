@@ -1,5 +1,6 @@
 package domain;
 
+import util.RandomGenerator;
 import view.InputView;
 import view.OutputView;
 
@@ -10,9 +11,7 @@ public class LottoManager {
     private static final int LOTTO_PRICE = 1000;
 
     public void doLotto(Scanner scanner) {
-        int boughtCount = viewInputMoney(scanner);
-        OutputView.printBuyCount(boughtCount);
-
+        List<List<Integer>> randomNumbers = makeNumbers(viewInputMoney(scanner));
         List<Integer> numbers = viewInputNumbers(scanner);
         int bonusNumber = viewInputBonusNumber(scanner, numbers);
     }
@@ -23,6 +22,12 @@ public class LottoManager {
 
     private int getBoughtCount(int money) {
         return money / LOTTO_PRICE;
+    }
+
+    public List<List<Integer>> makeNumbers(int count) {
+        OutputView.printBuyCount(count);
+
+        return RandomGenerator.random(count);
     }
 
     public List<Integer> viewInputNumbers(Scanner scanner) {
