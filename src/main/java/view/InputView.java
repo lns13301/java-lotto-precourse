@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class InputView {
     private static final String NEW_LINE = "\n";
-    private static final String INPUT_MONEY_MISMATCH_MESSAGE = "[ERROR] 구입 금액 입력이 잘못되었습니다. (양의 정수 입력)";
+    private static final String INPUT_MONEY_MISMATCH_MESSAGE = "[ERROR] 구입 금액 입력이 잘못되었습니다. (1000 이상 양의 정수 입력)";
     private static final String INPUT_NUMBER_MISMATCH_MESSAGE = "[ERROR] 당첨 번호 입력이 잘못되었습니다.";
     private static final String INPUT_BONUS_NUMBER_MISMATCH_MESSAGE = "[ERROR] 보너스 번호 입력이 잘못되었습니다.";
 

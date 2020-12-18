@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class InputValidator {
     private static final String NUMBER_SPLIT_UNIT = ",";
+    private static final int MIN_TICKET_PRICE = 1000;
     private static final int NUMBER_COUNT = 6;
     private static final int NUMBER_MIN = 1;
     private static final int NUMBER_MAX = 45;
@@ -23,7 +24,7 @@ public class InputValidator {
     }
 
     private static void validateOverZero(int value) {
-        if (value < 0) {
+        if (value < MIN_TICKET_PRICE) {
             throw new IllegalArgumentException();
         }
     }
