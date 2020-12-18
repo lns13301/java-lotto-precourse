@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.stream.Collectors;
+
 /**
  * 당첨 번호를 담당하는 객체
  */
@@ -13,7 +15,21 @@ public class WinningLotto {
     }
 
     public Rank match(Lotto userLotto) {
-        // TODO 로직 구현
-        return null;
+        return Rank.valueOf(getLottoMatchCount(userLotto), isMatchBonusNumber(userLotto));
+    }
+
+    private int getLottoMatchCount(Lotto lotto) {
+        return (int) lotto.getNumbers().stream()
+                .mapToInt(number -> number)
+                .filter(this::isMatchNumber)
+                .count();
+    }
+
+    private boolean isMatchNumber(int userNumber) {
+        return lotto.getNumbers().stream().mapToInt(number -> number).anyMatch(number -> number == userNumber);
+    }
+
+    private boolean isMatchBonusNumber(Lotto lotto) {
+        return lotto.getNumbers().stream().mapToInt(number -> number).anyMatch(number -> number == bonusNo);
     }
 }
