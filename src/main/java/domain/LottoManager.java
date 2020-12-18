@@ -18,7 +18,7 @@ public class LottoManager {
         Lotto lotto = new Lotto(viewInputNumbers(scanner));
         winninglotto = new WinningLotto(new Lotto(viewInputNumbers(scanner)), viewInputBonusNumber(scanner, lotto));
 
-        viewResult();
+        showResult();
     }
 
     public int viewInputMoney(Scanner scanner) {
@@ -43,7 +43,7 @@ public class LottoManager {
         return InputView.inputBonusNumber(scanner, lotto);
     }
 
-    public void viewResult() {
-        lottos.getResult(winninglotto);
+    public void showResult() {
+        lottos.showResult(winninglotto);
     }
 }

@@ -1,6 +1,7 @@
 package domain;
 
-import java.util.Collections;
+import view.OutputView;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,7 +12,7 @@ public class Lottos {
         this.lottos = lottos;
     }
 
-    public List<Rank> getResult(WinningLotto winningLotto) {
-        return lottos.stream().map(winningLotto::match).collect(Collectors.toList());
+    public void showResult(WinningLotto winningLotto) {
+        OutputView.printResult(lottos.stream().map(winningLotto::match).collect(Collectors.toList()));
     }
 }
