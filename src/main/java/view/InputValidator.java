@@ -52,4 +52,29 @@ public class InputValidator {
 
         return numbers;
     }
+
+    public static int validateBonusNumber(List<Integer> numbers, String inputNumber) {
+        try {
+            int number = Integer.parseInt(inputNumber);
+
+            validateNumberRange(number);
+            validateDuplicatedNumber(numbers, number);
+
+            return number;
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateNumberRange(int number) {
+        if (number < NUMBER_MIN || number > NUMBER_MAX) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateDuplicatedNumber(List<Integer> numbers, int number) {
+        if (numbers.stream().mapToInt(num -> num).anyMatch(num -> num == number)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

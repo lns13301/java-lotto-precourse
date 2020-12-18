@@ -32,14 +32,14 @@ public class InputView {
         }
     }
     
-    public static void inputBonusNumber(Scanner scanner) {
+    public static int inputBonusNumber(Scanner scanner, List<Integer> numbers) {
         System.out.println(NEW_LINE + "보너스 볼을 입력해 주세요.");
 
         try {
-            scanner.nextLine();
+            return InputValidator.validateBonusNumber(numbers, scanner.nextLine());
         } catch (IllformedLocaleException e) {
             System.out.println(INPUT_BONUS_NUMBER_MISMATCH_MESSAGE);
-            inputBonusNumber(scanner);
+            return inputBonusNumber(scanner, numbers);
         }
     }
 }
