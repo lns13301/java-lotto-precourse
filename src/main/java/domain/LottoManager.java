@@ -2,6 +2,7 @@ package domain;
 
 import view.InputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class LottoManager {
@@ -9,6 +10,7 @@ public class LottoManager {
 
     public void doLotto(Scanner scanner) {
         viewInputMoney(scanner);
+        List<Integer> numbers = viewInputNumbers(scanner);
     }
 
     public int viewInputMoney(Scanner scanner) {
@@ -17,5 +19,9 @@ public class LottoManager {
 
     private int getBuyCount(int money) {
         return money / LOTTO_PRICE;
+    }
+
+    public List<Integer> viewInputNumbers(Scanner scanner) {
+        return InputView.inputLottoNumbers(scanner);
     }
 }
