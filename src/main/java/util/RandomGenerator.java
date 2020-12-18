@@ -1,5 +1,7 @@
 package util;
 
+import domain.Lotto;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -10,22 +12,22 @@ public class RandomGenerator {
     private static final int NUMBER_MIN = 1;
     private static final int NUMBER_MAX = 46;
 
-    public static List<List<Integer>> random(int count) {
-        List<List<Integer>> boughtNumbers = new ArrayList<>();
+    public static List<Lotto> random(int count) {
+        List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            boughtNumbers.add(makeNumbers());
+            lottos.add(makeLotto());
         }
 
-        return boughtNumbers;
+        return lottos;
     }
 
-    private static List<Integer> makeNumbers() {
-        return ThreadLocalRandom.current()
+    private static Lotto makeLotto() {
+        return new Lotto(ThreadLocalRandom.current()
                 .ints(NUMBER_MIN, NUMBER_MAX)
                 .distinct()
                 .limit(NUMBER_COUNT)
                 .boxed()
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 }

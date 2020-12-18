@@ -10,10 +10,11 @@ import java.util.Scanner;
 public class LottoManager {
     private static final int LOTTO_PRICE = 1000;
 
+    private Lottos lottos;
     private Lotto lotto;
 
     public void doLotto(Scanner scanner) {
-        List<List<Integer>> randomNumbers = makeNumbers(viewInputMoney(scanner));
+        lottos = new Lottos(makeNumbers(viewInputMoney(scanner)));
         lotto = new Lotto(viewInputNumbers(scanner));
         int bonusNumber = viewInputBonusNumber(scanner, lotto);
     }
@@ -26,7 +27,7 @@ public class LottoManager {
         return money / LOTTO_PRICE;
     }
 
-    public List<List<Integer>> makeNumbers(int count) {
+    public List<Lotto> makeNumbers(int count) {
         OutputView.printBuyCount(count);
 
         return RandomGenerator.random(count);
